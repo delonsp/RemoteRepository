@@ -1,0 +1,296 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3F7ACF07153B8CD900204739 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F7ACF06153B8CD900204739 /* UIKit.framework */; };
+		3F7ACF09153B8CD900204739 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F7ACF08153B8CD900204739 /* Foundation.framework */; };
+		3F7ACF0B153B8CD900204739 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F7ACF0A153B8CD900204739 /* CoreGraphics.framework */; };
+		3F7ACF11153B8CD900204739 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3F7ACF0F153B8CD900204739 /* InfoPlist.strings */; };
+		3F7ACF13153B8CD900204739 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F7ACF12153B8CD900204739 /* main.m */; };
+		3F7ACF17153B8CD900204739 /* DRSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F7ACF16153B8CD900204739 /* DRSAppDelegate.m */; };
+		3F7ACF1A153B8CD900204739 /* DRSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F7ACF19153B8CD900204739 /* DRSViewController.m */; };
+		3F7ACF1D153B8CD900204739 /* DRSViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F7ACF1B153B8CD900204739 /* DRSViewController_iPhone.xib */; };
+		3F7ACF20153B8CD900204739 /* DRSViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F7ACF1E153B8CD900204739 /* DRSViewController_iPad.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		3F7ACF02153B8CD900204739 /* SaudeSexual.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SaudeSexual.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F7ACF06153B8CD900204739 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		3F7ACF08153B8CD900204739 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		3F7ACF0A153B8CD900204739 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		3F7ACF0E153B8CD900204739 /* SaudeSexual-Info.plist */ = {isa = PBXFileReference; path = "SaudeSexual-Info.plist"; sourceTree = "<group>"; };
+		3F7ACF10153B8CD900204739 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		3F7ACF12153B8CD900204739 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		3F7ACF14153B8CD900204739 /* SaudeSexual-Prefix.pch */ = {isa = PBXFileReference; path = "SaudeSexual-Prefix.pch"; sourceTree = "<group>"; };
+		3F7ACF15153B8CD900204739 /* DRSAppDelegate.h */ = {isa = PBXFileReference; path = DRSAppDelegate.h; sourceTree = "<group>"; };
+		3F7ACF16153B8CD900204739 /* DRSAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DRSAppDelegate.m; sourceTree = "<group>"; };
+		3F7ACF18153B8CD900204739 /* DRSViewController.h */ = {isa = PBXFileReference; path = DRSViewController.h; sourceTree = "<group>"; };
+		3F7ACF19153B8CD900204739 /* DRSViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DRSViewController.m; sourceTree = "<group>"; };
+		3F7ACF1C153B8CD900204739 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/DRSViewController_iPhone.xib; sourceTree = "<group>"; };
+		3F7ACF1F153B8CD900204739 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/DRSViewController_iPad.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3F7ACEFF153B8CD900204739 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F7ACF07153B8CD900204739 /* UIKit.framework in Frameworks */,
+				3F7ACF09153B8CD900204739 /* Foundation.framework in Frameworks */,
+				3F7ACF0B153B8CD900204739 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3F7ACEF7153B8CD900204739 = {
+			isa = PBXGroup;
+			children = (
+				3F7ACF0C153B8CD900204739 /* SaudeSexual */,
+				3F7ACF05153B8CD900204739 /* Frameworks */,
+				3F7ACF03153B8CD900204739 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3F7ACF03153B8CD900204739 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3F7ACF02153B8CD900204739 /* SaudeSexual.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3F7ACF05153B8CD900204739 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3F7ACF06153B8CD900204739 /* UIKit.framework */,
+				3F7ACF08153B8CD900204739 /* Foundation.framework */,
+				3F7ACF0A153B8CD900204739 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3F7ACF0C153B8CD900204739 /* SaudeSexual */ = {
+			isa = PBXGroup;
+			children = (
+				3F7ACF15153B8CD900204739 /* DRSAppDelegate.h */,
+				3F7ACF16153B8CD900204739 /* DRSAppDelegate.m */,
+				3F7ACF18153B8CD900204739 /* DRSViewController.h */,
+				3F7ACF19153B8CD900204739 /* DRSViewController.m */,
+				3F7ACF1B153B8CD900204739 /* DRSViewController_iPhone.xib */,
+				3F7ACF1E153B8CD900204739 /* DRSViewController_iPad.xib */,
+				3F7ACF0D153B8CD900204739 /* Supporting Files */,
+			);
+			path = SaudeSexual;
+			sourceTree = "<group>";
+		};
+		3F7ACF0D153B8CD900204739 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3F7ACF0E153B8CD900204739 /* SaudeSexual-Info.plist */,
+				3F7ACF0F153B8CD900204739 /* InfoPlist.strings */,
+				3F7ACF12153B8CD900204739 /* main.m */,
+				3F7ACF14153B8CD900204739 /* SaudeSexual-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3F7ACF01153B8CD900204739 /* SaudeSexual */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3F7ACF23153B8CD900204739 /* Build configuration list for PBXNativeTarget "SaudeSexual" */;
+			buildPhases = (
+				3F7ACEFE153B8CD900204739 /* Sources */,
+				3F7ACEFF153B8CD900204739 /* Frameworks */,
+				3F7ACF00153B8CD900204739 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SaudeSexual;
+			productName = SaudeSexual;
+			productReference = 3F7ACF02153B8CD900204739 /* SaudeSexual.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3F7ACEF9153B8CD900204739 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+				ORGANIZATIONNAME = DrSolution;
+			};
+			buildConfigurationList = 3F7ACEFC153B8CD900204739 /* Build configuration list for PBXProject "SaudeSexual" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 3F7ACEF7153B8CD900204739;
+			productRefGroup = 3F7ACF03153B8CD900204739 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3F7ACF01153B8CD900204739 /* SaudeSexual */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3F7ACF00153B8CD900204739 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F7ACF11153B8CD900204739 /* InfoPlist.strings in Resources */,
+				3F7ACF1D153B8CD900204739 /* DRSViewController_iPhone.xib in Resources */,
+				3F7ACF20153B8CD900204739 /* DRSViewController_iPad.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3F7ACEFE153B8CD900204739 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F7ACF13153B8CD900204739 /* main.m in Sources */,
+				3F7ACF17153B8CD900204739 /* DRSAppDelegate.m in Sources */,
+				3F7ACF1A153B8CD900204739 /* DRSViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		3F7ACF0F153B8CD900204739 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3F7ACF10153B8CD900204739 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		3F7ACF1B153B8CD900204739 /* DRSViewController_iPhone.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3F7ACF1C153B8CD900204739 /* en */,
+			);
+			name = DRSViewController_iPhone.xib;
+			sourceTree = "<group>";
+		};
+		3F7ACF1E153B8CD900204739 /* DRSViewController_iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3F7ACF1F153B8CD900204739 /* en */,
+			);
+			name = DRSViewController_iPad.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3F7ACF21153B8CD900204739 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3F7ACF22153B8CD900204739 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3F7ACF24153B8CD900204739 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SaudeSexual/SaudeSexual-Prefix.pch";
+				INFOPLIST_FILE = "SaudeSexual/SaudeSexual-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		3F7ACF25153B8CD900204739 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SaudeSexual/SaudeSexual-Prefix.pch";
+				INFOPLIST_FILE = "SaudeSexual/SaudeSexual-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3F7ACEFC153B8CD900204739 /* Build configuration list for PBXProject "SaudeSexual" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3F7ACF21153B8CD900204739 /* Debug */,
+				3F7ACF22153B8CD900204739 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3F7ACF23153B8CD900204739 /* Build configuration list for PBXNativeTarget "SaudeSexual" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3F7ACF24153B8CD900204739 /* Debug */,
+				3F7ACF25153B8CD900204739 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3F7ACEF9153B8CD900204739 /* Project object */;
+}
