@@ -8,12 +8,37 @@
 
 #import <UIKit/UIKit.h>
 
-@class DRSViewController;
 
-@interface DRSAppDelegate : UIResponder <UIApplicationDelegate>
 
-@property (strong, nonatomic) UIWindow *window;
+@class DRSTextTableViewController1_iPad; // FirstMasterViewController
+@class DRSQuestTableViewController1_iPad; // SecondMasterViewController
+@class DRSInfoTableViewController_iPad; // SecondViewController
+@class RateSuggestService;
 
-@property (strong, nonatomic) DRSViewController *viewController;
+
+
+@interface DRSAppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate> { 
+  	DRSTextTableViewController1_iPad *tab1VC;
+	DRSQuestTableViewController1_iPad *tab2VC;
+	DRSInfoTableViewController_iPad *tab3VC;	
+}
+
+
+@property (strong, nonatomic) IBOutlet UIWindow *window;
+@property (strong, nonatomic) IBOutlet UITabBarController *tabBarController;
+
+@property (strong, nonatomic) IBOutlet DRSTextTableViewController1_iPad *tab1VC;
+@property (strong, nonatomic) IBOutlet DRSQuestTableViewController1_iPad *tab2VC;
+@property (strong, nonatomic) IBOutlet DRSInfoTableViewController_iPad *tab3VC;
+
+// Convenience Methods / Accessors
+@property (weak, nonatomic, readonly) UISplitViewController *splitViewController;
+@property (weak, nonatomic, readonly) UIViewController *currentMasterViewController;
+@property (weak, nonatomic, readonly) UINavigationController *masterNavigationController;
+@property (weak, nonatomic, readonly) UINavigationController *detailNavigationController;
+
+
+
+- (void) disableLeftBarButtonItemOnNavbar:(BOOL)disable;
 
 @end

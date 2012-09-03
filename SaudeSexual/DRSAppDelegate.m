@@ -7,27 +7,165 @@
 //
 
 #import "DRSAppDelegate.h"
+#import "DRSTextTableViewController1_iPad.h"
+#import "DRSQuestTableViewController1_iPad.h"
+#import "DRSInfoTableViewController_iPad.h"
+#import "RateSuggestService.h"
+#import "LocalyticsSession.h"
 
-#import "DRSViewController.h"
+#define APP_ID 550840148
+#define APP_KEY @"2e70d73727eaa3d36d59fb2-60886612-d4e6-11e1-47b7-00ef75f32667"
 
 @implementation DRSAppDelegate
 
 @synthesize window = _window;
-@synthesize viewController = _viewController;
+@synthesize tabBarController=_tabBarController;
+@synthesize tab1VC, tab2VC, tab3VC;
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        self.viewController = [[DRSViewController alloc] initWithNibName:@"DRSViewController_iPhone" bundle:nil];
-    } else {
-        self.viewController = [[DRSViewController alloc] initWithNibName:@"DRSViewController_iPad" bundle:nil];
+
+
+////// IPAD ONLY
+
+- (UISplitViewController *) splitViewController {
+    
+	if (![self.tabBarController.selectedViewController isKindOfClass:[UISplitViewController class]]) {
+		NSLog(@"Unexpected navigation controller class in tab bar controller hierarchy, check nib.");
+		return nil;
+	}
+	return (UISplitViewController *)self.tabBarController.selectedViewController;
+}
+- (UINavigationController *) masterNavigationController {
+	UISplitViewController *split = [self splitViewController];
+	if (split && split.viewControllers && [split.viewControllers count])
+		return [split.viewControllers objectAtIndex:0];
+	return nil;
+}
+- (UINavigationController *) detailNavigationController {
+	UISplitViewController *split = [self splitViewController];
+	if (split && split.viewControllers && [split.viewControllers count]>1)
+		return [split.viewControllers objectAtIndex:1];
+	return nil;
+}
+- (UIViewController *) currentMasterViewController {
+	UINavigationController *nav = [self masterNavigationController];
+	if (nav && nav.viewControllers && [nav.viewControllers count])
+		return [nav.viewControllers objectAtIndex:0];
+	return nil;
+}
+
+
+
+#pragma mark -
+#pragma mark UITabBarControllerDelegate methods
+
+- (BOOL)tabBarController:(UITabBarController *)tbc shouldSelectViewController:(UIViewController *)viewController {
+	if (!viewController.tabBarItem.enabled)
+		return NO;
+  
+	
+	if (![viewController isEqual:tbc.selectedViewController]) {
+		NSLog(@"About to switch tabs, popping to root view controller.");
+		UINavigationController *nav1 = [self detailNavigationController];
+        UINavigationController *nav2 = [self masterNavigationController];
+		if (nav1 && [nav1.viewControllers count]>1)
+			[nav1 popToRootViewControllerAnimated:YES];
+        if (nav2 && [nav2.viewControllers count]>1)
+			[nav2 popToRootViewControllerAnimated:YES];
+	}
+	
+	return YES;
+}
+
+- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController {
+   
+//    UISplitViewController *svc = (UISplitViewController* ) viewController;
+//    UINavigationController *master = [svc.viewControllers objectAtIndex:0];
+    UINavigationController *master = [self masterNavigationController];
+    
+    id m1 = [master.viewControllers objectAtIndex: 0];
+  
+    
+    if ([m1 respondsToSelector: @selector(detail)]) {
+        [m1 detail];
     }
-    self.window.rootViewController = self.viewController;
-    [self.window makeKeyAndVisible];
+   
+}
+
+#pragma mark -
+#pragma mark Setup App Tabs / Splits
+
+- (void)setupSplitViews {
+    
+    NSMutableArray *tabViewControllers = [[NSMutableArray alloc] initWithCapacity:3];
+    
+  //first tab (IntelligentSplitViewController)
+    UISplitViewController *vc1 = [self.tab1VC splitViewController];
+  
+    UITabBarItem *tempTab1 = [[UITabBarItem alloc] initWithTitle:@"Textos" 
+                                                           image:[UIImage imageNamed:@"96-book.png"]
+                                                             tag:0];
+    vc1.tabBarItem = tempTab1;
+       
+    [tabViewControllers addObject:vc1];
+    
+    //second tab (IntelligentSplitViewController)
+    UISplitViewController *vc2 = [self.tab2VC splitViewController];
+    
+    UITabBarItem *tempTab2 = [[UITabBarItem alloc] initWithTitle:@"Questionários" 
+                                                           image:[UIImage imageNamed:@"117-todo.png"] 
+                                                             tag:1];
+    vc2.tabBarItem = tempTab2;
+    [tabViewControllers addObject:vc2];
+    
+    //third tab (UIViewController)
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:self.tab3VC];
+    //UIViewController *vc3 = self.tab3VC;
+    
+    UITabBarItem *tempTab3 = [[UITabBarItem alloc] initWithTitle:@"Info" 
+                                                           image:[UIImage imageNamed:@"Alert.png"]
+                                                             tag:2];
+    nav.tabBarItem = tempTab3;
+    
+    
+    [tabViewControllers addObject:nav];
+    [self.tabBarController setViewControllers:tabViewControllers];
+    self.tabBarController.delegate = self;
+  
+
+}
+
+#pragma mark -
+#pragma mark Application lifecycle
+
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions{
+    
+    [[LocalyticsSession sharedLocalyticsSession] startSession:APP_KEY];
+    
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        
+        application.statusBarOrientation = UIInterfaceOrientationLandscapeRight;
+        [self setupSplitViews];
+        self.window.rootViewController = self.tabBarController;
+        [self.window makeKeyAndVisible];
+        
+    }
+    
+    
+    
+    NSString *rateUrl = [NSString stringWithFormat:@"http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=%d&pageNumber=0&sortOrdering=1&type=Purple+Software", APP_ID];
+    
+    [[RateSuggestService sharedService] setSuggestInterval:7];
+    [[RateSuggestService sharedService] setRateUrl:rateUrl];
+    [[RateSuggestService sharedService] setAlertTitle:NSLocalizedString(@"Dar nota ao aplicativo", nil) 
+                                                 body:NSLocalizedString(@"Você se importaria em gastar um instante para dar uma nota ao app SaúdeSexual ?", nil)  
+                                            buttonYes:NSLocalizedString(@"Sim", nil)  
+                                             buttonNo:NSLocalizedString(@"Não, obrigado", nil)];
+        
     return YES;
 }
+
+
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {
@@ -39,17 +177,15 @@
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
-    /*
-     Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
-     If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-     */
+    NSLog(@"Application entering background: save");
+    [[AppModel sharedModel] saveChangesToDataStore];
+    [[LocalyticsSession sharedLocalyticsSession] close];
+    [[LocalyticsSession sharedLocalyticsSession] upload];
 }
 
-- (void)applicationWillEnterForeground:(UIApplication *)application
-{
-    /*
-     Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-     */
+- (void)applicationWillEnterForeground:(UIApplication *)application {
+    [[LocalyticsSession sharedLocalyticsSession] resume];
+    [[LocalyticsSession sharedLocalyticsSession] upload];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
@@ -57,15 +193,55 @@
     /*
      Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
      */
+    [[RateSuggestService sharedService] check];
 }
 
-- (void)applicationWillTerminate:(UIApplication *)application
-{
+- (void)applicationWillTerminate:(UIApplication *)application {
+    // Close Localytics Session
+    [[LocalyticsSession sharedLocalyticsSession] close];
+    [[LocalyticsSession sharedLocalyticsSession] upload];
+}
+
+#pragma mark -
+#pragma mark Memory management
+
+- (void)applicationDidReceiveMemoryWarning:(UIApplication *)application {
     /*
-     Called when the application is about to terminate.
-     Save data if appropriate.
-     See also applicationDidEnterBackground:.
+     Free up as much memory as possible by purging cached data objects that can be recreated (or reloaded from disk) later.
      */
+	NSLog(@"LOW_MEMORY_WARNING");
+}
+
+- init {
+	if ((self = [super init])) {
+		// initialize  to nil
+		//mainWindow = nil;
+	}
+	return self;
+}
+
+
+
+
+- (void) disableLeftBarButtonItemOnNavbar:(BOOL)disable
+{
+    static UILabel *l = nil;
+    
+    if (disable) {
+        if (l != nil)
+            return;
+        l = [[UILabel alloc] initWithFrame:CGRectMake(0, 20, 160, 44)];
+        l.backgroundColor = [UIColor clearColor];
+        l.userInteractionEnabled = YES;
+        [self.window addSubview:l];
+    }
+    else {
+        if (l == nil)
+            return;
+        [l removeFromSuperview];
+        
+        l = nil;
+    }
 }
 
 @end
